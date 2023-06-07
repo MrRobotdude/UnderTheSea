@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="UnderTheSea.Views.HRDRecruitEmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnderTheSea.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+
+        <Label x:Name="label" Content="User Name" HorizontalAlignment="Left" Margin="80,36,0,0" VerticalAlignment="Top" Width="107" />
+        <Label x:Name="label1" Content="Password" HorizontalAlignment="Left" Margin="90,67,0,0" VerticalAlignment="Top" Width="97"/>
+        <Label x:Name="label2" Content="Department ID" HorizontalAlignment="Left" Margin="80,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.693,0.063"/>
+        <TextBox x:Name="UserNameins" HorizontalAlignment="Left" Height="23" Margin="192,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213"/>
+        <TextBox x:Name="Passwordins" HorizontalAlignment="Left" Height="23" Margin="192,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213"/>
+        <ComboBox x:Name="Department" Margin="192,102,95,383">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DepartmentName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="label5" Content="Salary" HorizontalAlignment="Left" Margin="90,133,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="Salaryins" HorizontalAlignment="Left" Height="23" Margin="192,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213"/>
+        <Button x:Name="Hirebtn" Content="Recruit" HorizontalAlignment="Left" Margin="137,380,0,0" VerticalAlignment="Top" Width="191" Click="Hirebtn_Click"/>
+        <Label x:Name="label6" Content="Recruit Employee" HorizontalAlignment="Left" Margin="187,10,0,0" VerticalAlignment="Top" Width="125"/>
+        <RichTextBox x:Name="descTextBox" HorizontalAlignment="Left" Height="150" Margin="192,176,0,0" VerticalAlignment="Top" Width="213">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label x:Name="label7" Content="Description" HorizontalAlignment="Left" Margin="90,164,0,0" VerticalAlignment="Top" Width="78"/>
+    </Grid>
+</UserControl>

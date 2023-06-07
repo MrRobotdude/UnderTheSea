@@ -1,0 +1,36 @@
+﻿<Window x:Class="UnderTheSea.Views.FODAdditionalPriceView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnderTheSea.Views"
+        mc:Ignorable="d"
+        Title="FODAdditionalPriceView" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" Content="Additional Price"/>
+        <ListView Grid.Row="1" x:Name="PropertyList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding propertyName}" Header="Property"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding propertyPrice}" Header="Price"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Total Charge:" Grid.Row="2"/>
+        <TextBlock x:Name="TotalCharge" Grid.Row="3"/>
+        <Label Content="Amount of Money: " Grid.Row="4"/>
+        <TextBox x:Name="AmountOfMoney" Grid.Row="5" />
+        
+        <Button x:Name="btnPay" Content="Pay" Grid.Row="6"/>
+    </Grid>
+</Window>

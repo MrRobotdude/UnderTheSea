@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="UnderTheSea.Views.PDFundView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnderTheSea.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Fund Request" Grid.Row="0" HorizontalAlignment="Center"/>
+        <DataGrid x:Name="FundRequests" SelectedItem="{Binding SelectedRequest}" Grid.Row="1" AlternatingRowBackground="Gray" CanUserAddRows="False" CanUserDeleteRows="False"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Amount of Money" Width="*" Binding="{Binding Path=Amount}"/>
+                <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Path= Request.Status}"/>
+                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Path= Description}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnProceed" Content="Proceed" Grid.Row="2"/>
+    </Grid>
+</UserControl>

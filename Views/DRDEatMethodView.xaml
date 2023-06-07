@@ -1,0 +1,14 @@
+﻿<Window x:Class="UnderTheSea.Views.DRDEatMethodView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnderTheSea.Views"
+        mc:Ignorable="d"
+        Title="DRDEatMethod" Height="300" Width="300">
+    <Grid>
+        <Label x:Name="label" Content="Eat Method" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="75" />
+        <Button x:Name="takeAwayBtn" Content="Take Away" HorizontalAlignment="Center" Margin="100" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="DineInBtn" Content="Dine In" HorizontalAlignment="Center" Margin="125" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

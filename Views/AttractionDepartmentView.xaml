@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="UnderTheSea.Views.AttractionDepartmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnderTheSea.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Attraction Department" HorizontalAlignment="Center" Grid.ColumnSpan="3" FontSize="30" Grid.Row="0"/>
+        <Button x:Name="sellTicketBtn" Content="Sell Ticket" Grid.Row="1" HorizontalAlignment="Center" Width="266" Height="80" Click="sellTicketBtn_Click"/>
+        <Button x:Name="checkTicketBtn" Content="Check Ticket" Grid.Row="1" Grid.Column="2" Click="checkTicketBtn_Click" Width="266" Height="80"/>
+        <Label x:Name="WarningLbl"  Content="" Grid.Row="2" Grid.Column="1"/>
+        <DataGrid Grid.ColumnSpan="3" SelectedItem="selectedTicket" Grid.Row="3" x:Name="Tickets" AlternatingRowBackground="Gray" CanUserAddRows="False" CanUserDeleteRows="False"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Ticket ID" Binding="{Binding Path=TicketID}"/>
+                <DataGridTextColumn Width="*" Header="Enter Date" Binding="{Binding Path= TicketDate}"/>
+                <DataGridTextColumn Width="*" Header="Status" Binding="{Binding Path= Status}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnSignOut" Content="Sign Out" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" Width="200"/>
+        <Button x:Name="WorkReport" Content="Work Report" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Width="200"/>
+        <Button x:Name="CancelTicket" Content="Cancel" Grid.Row="6"/>
+        <DatePicker x:Name="SelectDate" Grid.Row="5" Grid.ColumnSpan="3" />
+        <Label Content="Input ID" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center"/>
+        <TextBox x:Name="IDInput" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Button x:Name="UpdateTicket" Content="Update" Grid.Row="6" Grid.Column="2"/>
+        <Button x:Name="LeavePermit" Content="Leave Permit" Grid.Row="7"/>
+        <Button x:Name="Resign" Content="Resign" Grid.Row="7" Grid.Column="2"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="UnderTheSea.Views.KitchenDivisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnderTheSea.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid>
+        <Label Content="Kitchen Division" FontSize="20" HorizontalAlignment="Center" Margin="564,0,564,652"/>
+        <Button x:Name="orderBtn" Content="Order" HorizontalAlignment="Left" Margin="48,139,0,0" VerticalAlignment="Top" Width="182" Height="80"/>
+        <Button x:Name="purchaseBtn" Content="Purchase Request" HorizontalAlignment="Left" Margin="48,226,0,0" VerticalAlignment="Top" Width="182" Height="91"/>
+        <ContentControl x:Name="ActiveItem" Margin="332,139,10,10"></ContentControl>
+        <Button x:Name="menuBtn" Content="Menu" HorizontalAlignment="Left" Margin="48,322,0,0" VerticalAlignment="Top" Width="182" Height="62"/>
+        <Button x:Name="BtnSignOut" Content="Sign Out" HorizontalAlignment="Left" Margin="27,12,0,0" VerticalAlignment="Top" Width="145" Height="56"/>
+        <Button x:Name="BtnLeave" Content="Leave Permit" HorizontalAlignment="Left" Margin="10,612,0,0" VerticalAlignment="Top" Width="176" Height="50"/>
+        <Button x:Name="BtnResign" Content="Resign" HorizontalAlignment="Left" Margin="10,667,0,0" VerticalAlignment="Top" Width="176" Height="43"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="UnderTheSea.Views.PurchaseRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnderTheSea.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="All Purchase Request" Grid.Row="0" HorizontalAlignment="Center"/>
+        <DataGrid x:Name="PurchaseRequest" Grid.Row="1" AlternatingRowBackground="Gray" CanUserAddRows="False" CanUserDeleteRows="False"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sender" Binding="{Binding Path=Sender}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path= Status}"/>
+              <DataGridTextColumn Header="Price" Binding="{Binding Path= Price}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path= Description}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Grid.Row="3" x:Name="textBox" HorizontalAlignment="Center" Height="26" TextWrapping="Wrap" Text="" Width="164"/>
+        <Label Grid.Row="2" x:Name="label" Content="Amount of Fund" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Grid.Row="4" x:Name="reqFundBtn" Content="Send Fund Request" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="reqFundBtn_Click"/>
+    </Grid>
+</UserControl>
