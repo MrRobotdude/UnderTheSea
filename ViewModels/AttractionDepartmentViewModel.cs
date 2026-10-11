@@ -32,6 +32,9 @@ namespace UnderTheSea.ViewModels
         }
 
         public string IDInput { get; set; }
+        public bool CanLeavePermit { get { return !Helper.IsPortfolioDemo; } }
+        public bool CanResign { get { return !Helper.IsPortfolioDemo; } }
+        public bool CanWorkReport { get { return !Helper.IsPortfolioDemo; } }
         int employeeID;
 
         public AttractionDepartmentViewModel(int employeeID)
@@ -52,12 +55,25 @@ namespace UnderTheSea.ViewModels
 
         public void CancelTicket()
         {
-            TicketDA.CancelTicket(int.Parse(IDInput));
+            int id;
+            if (!int.TryParse(IDInput, out id) || id <= 0) return;
+            TicketDA.CancelTicket(id);
+            RefreshTickets();
         }
 
         public void UpdateTicket()
         {
-            TicketDA.updateDate(int.Parse(IDInput), SelectDate);
+            int id;
+            if (!int.TryParse(IDInput, out id) || id <= 0) return;
+            TicketDA.updateDate(id, SelectDate);
+            RefreshTickets();
+        }
+
+        public void RefreshTickets()
+        {
+            Tickets.Clear();
+            foreach (Ticket ticket in TicketDA.GetAllTicket())
+                Tickets.Add(new TicketModel { TicketID = ticket.TicketID, TicketDate = ticket.TicketDate, Status = ticket.Status });
         }
 
         public void LeavePermit()

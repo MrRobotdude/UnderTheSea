@@ -9,8 +9,15 @@ namespace UnderTheSea
 {
     public static class Helper
     {
+        public static bool IsPortfolioDemo
+        {
+            get { return Environment.GetEnvironmentVariable("UNDER_THE_SEA_DEMO") == "1"; }
+        }
+
         public static string CnnVal(string name)
         {
+            if (name == "connString" && IsPortfolioDemo)
+                return @"Server=(localdb)\MSSQLLocalDB;Database=UnderTheSeaPortfolioDemo;Trusted_Connection=True;";
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }

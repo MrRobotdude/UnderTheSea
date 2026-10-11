@@ -1,31 +1,44 @@
-﻿using Caliburn.Micro;
+using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace UnderTheSea.ViewModels
 {
-    public class LoginViewModel:Screen
+    public class LoginViewModel : Screen
     {
         public string UsernameTxt { get; set; }
         public string Password { get; set; }
         public string errorLbl { get; set; }
-        public void loginBtn()
-        {
-            Employee employeeDA = new Employee();
 
-            Employee employee = employeeDA.GetEmployee(UsernameTxt);
-            if (!Password.Equals(employee.Password))
+        public void LoginBtn()
+        {
+            errorLbl = "";
+            if (string.IsNullOrWhiteSpace(UsernameTxt) || string.IsNullOrEmpty(Password))
             {
-                errorLbl = "wrong password";
+                errorLbl = "Enter your username and password.";
             }
             else
             {
-                ShellViewModel viewModel = ShellViewModel.getInstance();
-                viewModel.ShowEmployeeView(employee);
+                try
+                {
+                    Employee employee = new Employee().GetEmployee(UsernameTxt.Trim());
+                    if (employee == null || !string.Equals(Password, employee.Password, StringComparison.Ordinal)
+                        || string.Equals(employee.Status, "Retired", StringComparison.OrdinalIgnoreCase))
+                    {
+                        errorLbl = "Unable to sign in with these credentials.";
+                    }
+                    else
+                    {
+                        Password = null;
+                        ShellViewModel.getInstance().ShowEmployeeView(employee);
+                    }
+                }
+                catch (SqlException)
+                {
+                    errorLbl = "The training database is unavailable. Check the local database configuration.";
+                }
             }
+            NotifyOfPropertyChange(() => errorLbl);
         }
     }
 }
