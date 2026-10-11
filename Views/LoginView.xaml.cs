@@ -20,6 +20,12 @@ namespace UnderTheSea.Views
     /// </summary>
     public partial class LoginView : UserControl
     {
+        private void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var model = DataContext as UnderTheSea.ViewModels.LoginViewModel;
+            if (model != null) model.Password = ((PasswordBox)sender).Password;
+        }
+
         public LoginView()
         {
             InitializeComponent();

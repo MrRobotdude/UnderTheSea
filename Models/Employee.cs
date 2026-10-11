@@ -23,16 +23,16 @@ namespace UnderTheSea
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("connString")))
             {
-                var output = connection.Query<Employee>($"select * from MsEmployee where UserName ='{username}'").ToList();
-                return output[0];
+                return connection.Query<Employee>(
+                    "SELECT * FROM MsEmployee WHERE UserName = @username", new { username }).FirstOrDefault();
             }
         }
         public Employee GetEmployee(int employeeID)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("connString")))
             {
-                var output = connection.Query<Employee>($"select * from MsEmployee where EmployeeID ='{employeeID}'").ToList();
-                return output[0];
+                return connection.Query<Employee>(
+                    "SELECT * FROM MsEmployee WHERE EmployeeID = @employeeID", new { employeeID }).FirstOrDefault();
             }
         }
 

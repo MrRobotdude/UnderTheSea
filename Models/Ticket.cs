@@ -41,8 +41,7 @@ namespace UnderTheSea
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("connString")))
             {
-                var output = connection.Query<Ticket>($"SELECT * FROM MsTicket WHERE ticketID = '" + ticketID + "'").ToList();
-                return output[0];
+                return connection.Query<Ticket>("SELECT * FROM MsTicket WHERE TicketID = @ticketID", new { ticketID }).FirstOrDefault();
             }
         }
 
@@ -162,7 +161,8 @@ namespace UnderTheSea
             {
                 return null;
             }
-            return getTicket(int.Parse(ticketID));
+            int parsedId;
+            return int.TryParse(ticketID, out parsedId) ? getTicket(parsedId) : null;
         }
     }
 }

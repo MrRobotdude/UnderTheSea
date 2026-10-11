@@ -25,14 +25,15 @@ namespace UnderTheSea.Views
             }
             else
             {
-                if ((DateTime.Now - ticket.getDate(ticket.TicketID)).TotalDays > 1)
+                if (ticket.TicketDate.Date != DateTime.Today || ticket.Status != "Available")
                 {
-                    WarningLbl.Content = "Its already Out of Date";
+                    WarningLbl.Content = "This ticket is not valid for admission today.";
                 }
                 else
                 {
                     WarningLbl.Content = "You are Allowed";
                     ticketDA.updateStatus(ticket.TicketID, "Scanned");
+                    ((AttractionDepartmentViewModel)DataContext).RefreshTickets();
                 }
 
             }
@@ -42,6 +43,7 @@ namespace UnderTheSea.Views
         {
             Ticket ticketDA = new Ticket();
             ticketDA.buyTicket();
+            ((AttractionDepartmentViewModel)DataContext).RefreshTickets();
         }
     }
 }
